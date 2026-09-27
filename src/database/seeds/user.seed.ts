@@ -9,7 +9,7 @@ import { Role, RoleDocument } from '../schemas/role.schema';
 import { User, UserDocument } from '../schemas/user.schema';
 import { ROLES } from '../../modules/roles/constant/role.constant';
 
-async function seedAdminUser() {
+async function seedUser() {
   const app = await NestFactory.createApplicationContext(AppModule);
 
   try {
@@ -55,4 +55,4 @@ async function seedAdminUser() {
   }
 }
 
-seedAdminUser();
+void seedUser();

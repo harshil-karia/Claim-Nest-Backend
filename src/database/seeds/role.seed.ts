@@ -35,4 +35,4 @@ async function seedRoles() {
   }
 }
 
-seedRoles();
+void seedRoles();

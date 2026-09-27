@@ -172,7 +172,7 @@ Creates predefined roles if they don't already exist.
 #### Seed Admin User
 
 ```bash
-npm run seed:admin
+npm run seed:user
 ```
 
 Reads credentials from `ADMIN_EMAIL` and `ADMIN_PASSWORD` in `.env`. Password is hashed with Argon2 before storage.

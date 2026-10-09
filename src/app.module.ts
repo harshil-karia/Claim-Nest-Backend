@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import configuration from './config'
 import { envValidationSchema } from './common/validation/env.validation';
 import { DatabaseModule } from './database/database.module';
+import { ApolloModule } from './common/apollo/apollo.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
 import { ClaimsModule } from './modules/claims/claims.module';
@@ -17,6 +18,7 @@ import { ClaimsModule } from './modules/claims/claims.module';
       validationSchema: envValidationSchema,
     }),
     DatabaseModule,
+    ApolloModule,
     RolesModule,
     UsersModule,
     ClaimsModule,
@@ -24,4 +26,4 @@ import { ClaimsModule } from './modules/claims/claims.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

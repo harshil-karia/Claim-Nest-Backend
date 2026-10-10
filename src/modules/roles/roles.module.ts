@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Role, RoleSchema } from '../../database/schemas/role.schema';
 
 @Module({
-    imports: [
+  imports: [
     MongooseModule.forFeature([
       {
         name: Role.name,
@@ -11,5 +11,6 @@ import { Role, RoleSchema } from '../../database/schemas/role.schema';
       },
     ]),
   ],
+  exports: [MongooseModule],
 })
 export class RolesModule {}

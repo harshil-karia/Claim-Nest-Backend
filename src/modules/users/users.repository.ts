@@ -3,6 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { User, UserDocument } from '../../database/schemas/user.schema';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersRepository {
@@ -11,11 +13,33 @@ export class UsersRepository {
     private readonly userModel: Model<UserDocument>,
   ) {}
 
-   async findByEmail(email: string): Promise<UserDocument | null> {
-    return this.userModel.findOne({ email }).exec();
+  async findByEmail(email: string): Promise<UserDocument | null> {
+    return this.userModel.findOne({ email: email.toLowerCase().trim() }).exec();
   }
 
   async findById(id: string): Promise<UserDocument | null> {
-    return this.userModel.findOne({ id })
+    return this.userModel.findById(id).exec();
+  }
+
+  async findAll(): Promise<UserDocument[]> {
+    return this.userModel.find().exec();
+  }
+
+  async create(createUserDto: CreateUserDto): Promise<UserDocument> {
+    const user = new this.userModel(createUserDto);
+    return user.save();
+  }
+
+  async updateById(
+    id: string,
+    updateUserDto: UpdateUserDto,
+  ): Promise<UserDocument | null> {
+    return this.userModel
+      .findByIdAndUpdate(id, { $set: updateUserDto }, { new: true })
+      .exec();
+  }
+
+  async deleteById(id: string): Promise<UserDocument | null> {
+    return this.userModel.findByIdAndDelete(id).exec();
   }
 }

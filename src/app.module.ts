@@ -9,6 +9,8 @@ import { ApolloModule } from './common/apollo/apollo.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
 import { ClaimsModule } from './modules/claims/claims.module';
+import { MailModule } from './modules/mail/mail.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ClaimsModule } from './modules/claims/claims.module';
     RolesModule,
     UsersModule,
     ClaimsModule,
+    MailModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

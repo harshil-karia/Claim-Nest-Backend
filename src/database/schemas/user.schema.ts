@@ -45,6 +45,13 @@ export class User {
     default: true,
   })
   isActive: boolean;
+
+  @Prop({
+    type: String,
+    required: false,
+    default: null,
+  })
+  refreshToken?: string | null;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -4,7 +4,6 @@ import { HydratedDocument, Types } from 'mongoose';
 export type ClaimDocument = HydratedDocument<Claim>;
 
 @Schema({
-    collection: 'claims',
   _id: false,
 })
 export class Address {
@@ -308,6 +307,7 @@ export const DeceasedPersonSchema =
   SchemaFactory.createForClass(DeceasedPerson);
 
 @Schema({
+  collection: 'claims',
   timestamps: true,
 })
 export class Claim {

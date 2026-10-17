@@ -39,6 +39,44 @@ export class UsersRepository {
       .exec();
   }
 
+  async findByEmailWithRole(email: string): Promise<UserDocument | null> {
+    return this.userModel
+      .findOne({ email: email.toLowerCase().trim() })
+      .populate('roleId')
+      .exec();
+  }
+
+  async findByIdWithRole(id: string): Promise<UserDocument | null> {
+    return this.userModel.findById(id).populate('roleId').exec();
+  }
+
+  async updateRefreshToken(
+    id: string,
+    refreshToken: string | null,
+  ): Promise<UserDocument | null> {
+    return this.userModel
+      .findByIdAndUpdate(id, { $set: { refreshToken } }, { new: true })
+      .exec();
+  }
+
+  async updatePassword(
+    id: string,
+    hashedPassword: string,
+  ): Promise<UserDocument | null> {
+    return this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          $set: {
+            password: hashedPassword,
+            refreshToken: null,
+          },
+        },
+        { new: true },
+      )
+      .exec();
+  }
+
   async deleteById(id: string): Promise<UserDocument | null> {
     return this.userModel.findByIdAndDelete(id).exec();
   }

@@ -11,6 +11,7 @@ import { UsersModule } from './modules/users/users.module';
 import { ClaimsModule } from './modules/claims/claims.module';
 import { MailModule } from './modules/mail/mail.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { TemplatesModule } from './modules/templates/templates.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AuthModule } from './modules/auth/auth.module';
     ClaimsModule,
     MailModule,
     AuthModule,
+    TemplatesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

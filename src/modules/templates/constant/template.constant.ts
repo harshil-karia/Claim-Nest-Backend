@@ -5,6 +5,7 @@ import { FORM_ISR_4_HTML } from './html/form-isr-4.html';
 import { FORM_ISR_5_HTML } from './html/form-isr-5.html';
 import { ANNEXURE_D_HTML } from './html/annexure-d.html';
 import { ANNEXURE_E_HTML } from './html/annexure-e.html';
+import { ANNEXURE_F_HTML } from './html/annexure-f.html';
 
 export const TEMPLATE_CODES = {
   FORM_ISR_1: 'FORM_ISR_1',
@@ -14,6 +15,7 @@ export const TEMPLATE_CODES = {
   FORM_ISR_5: 'FORM_ISR_5',
   ANNEXURE_D: 'ANNEXURE_D',
   ANNEXURE_E: 'ANNEXURE_E',
+  ANNEXURE_F: 'ANNEXURE_F',
 } as const;
 
 export type TemplateCode = (typeof TEMPLATE_CODES)[keyof typeof TEMPLATE_CODES];
@@ -115,6 +117,17 @@ export const STATIC_TEMPLATES: StaticTemplateItem[] = [
     pageCount: 2,
     pageSize: 'A4',
     htmlContent: ANNEXURE_E_HTML,
+    isActive: true,
+  },
+  {
+    code: TEMPLATE_CODES.ANNEXURE_F,
+    name: 'Annexure F',
+    description:
+      'No-Objection Certificate from other Legal Heir(s) for Transmission of Securities in favour of the Claimant(s) wherein the Sole Holder is deceased and NO NOMINATION has been registered (SEBI Transmission without Nomination)',
+    category: TEMPLATE_CATEGORIES.TRANSMISSION,
+    pageCount: 2,
+    pageSize: 'A4',
+    htmlContent: ANNEXURE_F_HTML,
     isActive: true,
   },
 ];

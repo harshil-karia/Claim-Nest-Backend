@@ -1,3 +1,4 @@
+import { UseGuards } from '@nestjs/common';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ClaimsService } from './claims.service';
 import { ClaimType } from './dto/claim.type';
@@ -5,6 +6,7 @@ import { CreateClaimInput } from './dto/create-claim.input';
 import { UpdateClaimInput } from './dto/update-claim.input';
 import { CurrentGqlUser } from '../auth/decorators/current-gql-user.decorator';
 import { type JwtPayload } from '../auth/guards/jwt-auth.guard';
+import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 
 @Resolver(() => ClaimType)
 export class ClaimsResolver {
@@ -30,6 +32,7 @@ export class ClaimsResolver {
     return this.claimsService.findById(id);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => ClaimType, {
     name: 'createClaim',
     description: 'Create a new share inheritance claim',
